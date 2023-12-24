@@ -1,38 +1,72 @@
+body {
+  background-color: white;
+  height: 100%;
+  color: black;
+}
+
+form {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  text-align: left;
+  gap: 0.3rem;
+}
+
+.error {
+  font-size: 0.8rem;
+  margin: 0px;
+  padding-top: 0.3rem;
+
+  color: red;
+  font-weight: 600;
+}
+
+.signUp {
+  background-color: white;
+}
+
 .signupParentDiv {
-    border: 1px solid black;
-    width: max-content;
-    padding: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 6px;
-  }
-  
-  .signupParentDiv .input {
-    border-top-color: transparent;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    outline-color: transparent;
-  }
-  
-  .signupParentDiv button {
-    width: 100%;
-    height: 48px;
-    /* border-color: transparent; */
-    background-color: #002f34;
-    color: whitesmoke;
-    font-weight: 900;
-  }
-  .signupParentDiv button:hover {
-    background-color: white;
-    color: #002f34;
-    border: 2px solid #002f34;
-  }
-  
-  .signupParentDiv a {
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-  }
-  
+  width: 800px;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  background-color: white;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signupParentDiv .input {
+  width: 300px;
+  padding: 0.6rem;
+  background: white;
+  color: black;
+}
+
+.signupParentDiv button {
+  width: 200px;
+  height: 48px;
+  /* border-color: transparent; */
+  background-color: #002f34;
+  color: whitesmoke;
+  font-weight: 900;
+  margin-top: 0.8rem;
+}
+.signupParentDiv button:hover {
+  background-color: white;
+  color: #002f34;
+  border: 2px solid #002f34;
+}
+
+.signupParentDiv a {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}

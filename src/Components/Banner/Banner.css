@@ -1,14 +1,16 @@
 .bannerParentDiv {
   padding-top: 4em;
 }
-.bannerParentDiv .bannerChildDiv {
-}
+
 .bannerParentDiv .bannerChildDiv .menuBar {
   display: flex;
   padding: 10px 16px 10px 16px;
+  background-color: white;
+  color: black;
+  font-size: 0.9rem;
 }
-
-.bannerParentDiv .bannerChildDiv .menuBar span {
+.bannerParentDiv .bannerChildDiv .menuBar .categoryMenu {
+  display: flex;
 }
 
 .bannerParentDiv .bannerChildDiv .menuBar .categoryMenu span {
@@ -16,8 +18,6 @@
   font-weight: bolder;
 }
 
-.bannerParentDiv .bannerChildDiv .menuBar .otherQuickOptions {
-}
 .bannerParentDiv .bannerChildDiv .menuBar .otherQuickOptions span {
   padding: 10px;
 }
@@ -26,7 +26,7 @@
   position: relative;
   width: 100vw;
 }
-.bannerChildDiv .banner img{
+.bannerChildDiv .banner img {
   width: 100vw;
 }
 

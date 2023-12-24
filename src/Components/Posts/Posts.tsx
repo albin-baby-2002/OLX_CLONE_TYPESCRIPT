@@ -16,7 +16,7 @@ function Posts(): ReactElement {
               <Heart></Heart>
             </div>
             <div className="image">
-              <img src="../../../Images/R15V3.jpg" alt="" />
+              <img src="../../../R15V3.jpg" alt="" />
             </div>
             <div className="content">
               <p className="rate">&#x20B9; 250000</p>
@@ -39,7 +39,7 @@ function Posts(): ReactElement {
               <Heart></Heart>
             </div>
             <div className="image">
-              <img src="../../../Images/R15V3.jpg" alt="" />
+              <img src="../../../R15V3.jpg" alt="" />
             </div>
             <div className="content">
               <p className="rate">&#x20B9; 250000</p>
