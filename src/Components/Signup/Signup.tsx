@@ -1,4 +1,5 @@
 import { FormEvent, ReactElement, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../olx-logo.png";
 import "./Signup.css";
 import { auth, db } from "../../Firebase/config";
@@ -6,6 +7,15 @@ import { collection, addDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 export default function Signup(): ReactElement {
+  //navigate
+
+  const navigate = useNavigate();
+  
+   const handleNavigation = ()=>{
+    
+    navigate('/login')
+  }
+
   // regex
   const nameRegEx = new RegExp(/^[a-zA-Z ]+$/);
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -30,11 +40,13 @@ export default function Signup(): ReactElement {
     e.preventDefault();
 
     try {
+      
       const result = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
+      
       const user = result.user;
 
       await updateProfile(user, {
@@ -50,11 +62,19 @@ export default function Signup(): ReactElement {
       });
 
       console.log("User data added to Firestore with ID:", docRef.id);
+      
+      navigate('/login')
+      
     } catch (err: any) {
+      
       if (err.code === "auth/email-already-in-use") {
+        
         console.log("Email is already in use. Please choose a different one.");
+        
       } else {
+        
         console.log("An error occurred. Please try again later.");
+        
       }
 
       console.log(err);
@@ -187,9 +207,9 @@ export default function Signup(): ReactElement {
 
           <br />
           <br />
-          <button>Signup</button>
+          <button >Signup</button>
         </form>
-        <a>Login</a>
+        <a onClick={handleNavigation}>Login</a>
       </div>
     </div>
   );

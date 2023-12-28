@@ -1,6 +1,6 @@
 .loginParentDiv {
-    border: 1px solid black;
-    width: max-content;
+   
+   
     padding: 10px;
     position: absolute;
     top: 50%;
@@ -10,15 +10,30 @@
   }
   
   .loginParentDiv .input {
-    border-top-color: transparent;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    outline-color: transparent;
+  
+    background: white;
+    width: 100%;
+    color: black;
+    padding : .6rem
   }
   
+  .form_login{
+    width: 100%;
+  }
+  
+  .form_login div {
+    width: 100%;
+  }
+  
+  
+  
+  
   .loginParentDiv button {
+    margin-top: 1.4rem;
+    margin-left: .7rem;
     width: 100%;
     height: 48px;
+   
     /* border-color: transparent; */
     background-color: #002f34;
     color: whitesmoke;
@@ -34,5 +49,10 @@
     display: flex;
     justify-content: center;
     cursor: pointer;
+    margin-top: 1rem;
+    margin-left: 1.4rem;
+    
   }
+  
+  
   

@@ -1,37 +1,116 @@
-import { ReactElement } from "react";
+import { ReactElement, useState,FormEvent, useEffect } from "react";
 import Logo from "../../olx-logo.png";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
+import { auth} from "../../Firebase/config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 function Login(): ReactElement {
+  
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  
+  const navigate = useNavigate()
+  
+ 
+  
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('')
+  
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const [emailValidation, setEmailValidation] = useState(true);
+  
+   const handleNavigation = ()=>{
+    
+    navigate('/signup')
+  }
+  
+  
+  const handleLogin = (e:FormEvent<HTMLFormElement>):void=>{
+    
+    e.preventDefault()
+    
+    signInWithEmailAndPassword(auth, email, password)
+  .then(() => {
+    // Signed in 
+   
+    
+    alert('Login Successful')
+    
+    navigate('/')
+ 
+  })
+  .catch((error) => {
+ 
+    const errorMessage = error.message;
+    
+    alert(`Login Failed : ${errorMessage}`)
+  });
+  }
+  
+   useEffect(() => {
+    if (hasInteracted) {
+      setEmailValidation(emailRegex.test(email) && email.trim().length > 0);
+    }
+  }, [email]);
+  
+  
+  
   return (
     <div>
       <div className="loginParentDiv">
-        <img width="200px" height="200px" src={Logo}></img>
-        <form>
-          <label htmlFor="fname">Email</label>
+        <img width="250px" height="200px" src={Logo}></img>
+        
+        <form onSubmit={handleLogin}  className="form_login">
+          
+          <div>
+            <label htmlFor="LoginEmail">Email</label>
           <br />
           <input
             className="input"
             type="email"
-            id="fname"
+            id="LoginEmail"
             name="email"
-            defaultValue="John"
+            value={email}
+            onChange={(e)=>{
+              setEmail(e.target.value)
+              setHasInteracted(true);
+            }}
+            
           />
-          <br />
-          <label htmlFor="lname">Password</label>
+             {!emailValidation ? <p className="error"> Invalid Email</p> : ""}
+          </div>
+          
+          <div>
+             <br />
+          <label htmlFor="loginPassword">Password</label>
           <br />
           <input
             className="input"
             type="password"
-            id="lname"
+            id="loginPassword"
             name="password"
-            defaultValue="Doe"
+            value={password}
+            onChange={(e)=>{
+              setPassword(e.target.value)
+            }}
+            
+           
           />
-          <br />
-          <br />
+            
+          </div>
+          
+          <div>
+            
           <button>Login</button>
+          
+          </div>
+          
+          
+         
+          
         </form>
-        <a>Signup</a>
+        
+        <a  onClick={handleNavigation}>Signup</a>
       </div>
     </div>
   );
