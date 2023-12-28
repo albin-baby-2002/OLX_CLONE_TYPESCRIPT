@@ -1,15 +1,9 @@
-import {
-  FormEvent,
-  ReactElement,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import Logo from "../../../public/olx-logo.png";
+import { FormEvent, ReactElement, useEffect, useState } from "react";
+import Logo from "../../olx-logo.png";
 import "./Signup.css";
-import { FirebaseContext } from "../../store/firebaseContext";
-
-const Firebase = useContext(FirebaseContext);
+import { auth, db } from "../../Firebase/config";
+import { collection, addDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 export default function Signup(): ReactElement {
   // regex
@@ -32,9 +26,39 @@ export default function Signup(): ReactElement {
   const [phoneValidation, setPhoneValidation] = useState(true);
   const [passwordValidation, setPasswordValidation] = useState(true);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(username);
+
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = result.user;
+
+      await updateProfile(user, {
+        displayName: username,
+      });
+
+      console.log("User created successfully:", user);
+
+      const docRef = await addDoc(collection(db, "users"), {
+        id: user.uid,
+        username: username,
+        phone: phone,
+      });
+
+      console.log("User data added to Firestore with ID:", docRef.id);
+    } catch (err: any) {
+      if (err.code === "auth/email-already-in-use") {
+        console.log("Email is already in use. Please choose a different one.");
+      } else {
+        console.log("An error occurred. Please try again later.");
+      }
+
+      console.log(err);
+    }
   };
 
   useEffect(() => {

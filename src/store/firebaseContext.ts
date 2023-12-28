@@ -1,4 +1,4 @@
-import { FirebaseApp } from "firebase/app";
+import firebase from "firebase/compat/app";
 import { createContext } from "react";
 
-export const FirebaseContext = createContext<FirebaseApp | null>(null);
+export const FirebaseContext = createContext<firebase.app.App | null>(null);
