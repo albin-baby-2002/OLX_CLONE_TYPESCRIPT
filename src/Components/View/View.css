@@ -4,17 +4,23 @@
 }
 .viewParentDiv .imageShowDiv {
   padding: 16px;
-  width: 70vw;
+  width: 60vw;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }
 .viewParentDiv .imageShowDiv img {
-  width: 65vw;
-  height: 85vh;
+ 
+  height: 300px;
 }
 
 .viewParentDiv .rightSection {
   padding: 16px;
   margin-top: 3em;
-  width: 30vw;
+  width: 40vw;
+  margin-right: 4rem;
 }
 
 .viewParentDiv .rightSection .productDetails :first-child {
@@ -31,13 +37,16 @@
   padding: 6px;
   border-radius: 6px;
   margin-bottom: 2em;
-  width: 100%;
+  width: 350px;
+  margin-right: 2rem;
 }
 
 .viewParentDiv .rightSection .contactDetails {
   border: 1px solid black;
   padding: 6px;
   border-radius: 6px;
+  
+  width: 350px;
 }
 
 .viewParentDiv .rightSection .contactDetails :first-child {

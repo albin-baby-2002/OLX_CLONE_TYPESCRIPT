@@ -37,6 +37,7 @@ export default function Signup(): ReactElement {
   const [passwordValidation, setPasswordValidation] = useState(true);
 
   const handleSubmit = async (e: FormEvent) => {
+    
     e.preventDefault();
 
     try {

@@ -2,6 +2,7 @@
   padding: 10px;
   background-color: whitesmoke;
   position: fixed;
+  top: 0;
   width: 100vw;
   z-index: 999;
 }
@@ -11,7 +12,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-right: 1.3rem;
 }
+
+
 
 .placeSearch {
   width: 16em;
@@ -93,6 +97,30 @@
   color: #002f34;
 }
 
+.language .arrow {
+  margin-top: .6rem;
+  
+}
+
+.login_Name{
+  border-bottom: 5px solid #002f34 ;
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.login_Btn{
+  
+  border-bottom: 5px solid #002f34 ;
+  cursor: pointer;
+}
+
+.logout_Btn{
+  margin-right: 1.5rem;
+  border-bottom: 5px solid #002f34 ;
+  cursor: pointer;
+  font-weight: bold
+}
+
 .language span {
   /* justify-content: space-between;
   align-items: center; */
@@ -109,7 +137,7 @@
   white-space: normal;
   text-overflow: ellipsis;
   font-weight: bolder;
-  margin-right: 5px;
+  
 }
 
 .loginPage span {

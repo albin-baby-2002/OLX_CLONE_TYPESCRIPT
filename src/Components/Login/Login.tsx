@@ -31,10 +31,6 @@ function Login(): ReactElement {
     
     signInWithEmailAndPassword(auth, email, password)
   .then(() => {
-    // Signed in 
-   
-    
-    alert('Login Successful')
     
     navigate('/')
  

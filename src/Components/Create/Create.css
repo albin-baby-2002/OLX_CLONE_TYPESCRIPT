@@ -1,18 +1,44 @@
 .centerDiv {
-    border: 1px solid black;
-    width: max-content;
-    padding: 50px;
+    
+    
     position: absolute;
-    top: 65%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 6px;
+   
+    margin-bottom: 2rem;
   }
-  .input {
-    border-top-color: transparent;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    outline-color: transparent;
+  
+  .innerDiv_post_ad{
+    width: max-content;
+     border-radius: 6px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+    border: 1px solid black;
+    margin-top: 8rem;
+    margin-bottom: 2rem;
+  }
+  
+  .heading_post_ad{
+    text-align: center;
+  }
+  
+  .post_ad_form{
+    
+    width: 100%;
+  }
+  
+  
+  
+  .post_ad_form .input {
+ 
+    background-color: white;
+    color: black;
+    font-size: 1.2rem;
+    padding:.4rem;
+    margin-top: .4rem;
+    
   }
   
   .uploadBtn {
@@ -30,3 +56,14 @@
     border: 2px solid #002f34;
   }
   
+  .upload{
+    margin-top: 1rem;
+  }
+  
+  .upload img {
+    
+    margin-top: 1rem;
+    
+    width: 100%;
+    height: 150px;
+  }
