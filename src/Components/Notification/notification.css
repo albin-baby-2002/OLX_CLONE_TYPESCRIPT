@@ -1,0 +1,127 @@
+
+.parent_notification{
+     
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.633);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.notification {
+    
+    background-color: white;
+    color:black;
+    font-size: large;
+    padding: 1.3rem;
+    max-width: 370px;
+  
+    transition: all 500ms ease-in-out ;
+    max-height:95% ;
+
+}
+
+.notification .close{
+    
+   
+    font-weight: bold;
+    color: rgba(147, 147, 148, 0.909);
+    font-size: 2rem;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    cursor: pointer;
+    width: 100%;
+}
+
+.notification p{
+    margin: 0px;
+}
+
+.notification img{
+    
+    height: 65px;
+}
+
+.notification .quotes{
+    
+    display: grid;
+    justify-items: center;
+}
+
+.notification .quotes p{
+    
+    
+    margin-top: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.methods button {
+    
+    background-color: white;
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    border-radius: 8px;
+    font-size: .9rem;
+    margin-top: 2rem;
+    text-align: left;
+    padding-left: 1.2rem;
+    font-weight: bold;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+}
+
+.methods .or{
+    
+    text-align: center;
+    font-weight: bold;
+    margin: 1.5rem;
+    font-size: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.methods .signup{
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 3.5rem;
+    
+}
+
+.methods .signup span{
+    border-bottom: 2px solid black;
+    
+}
+
+.methods .info{
+    
+    text-align: center;
+    font-size: .8rem;
+    color: #676565;
+    margin-bottom: 1rem;
+}
+
+.methods .terms{
+    
+    text-align: center;
+    font-size: .8rem;
+    color: #676565;
+      margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.methods .terms span{
+    color: rgb(34, 100, 224);
+    
+}

@@ -42,6 +42,11 @@ export default function Signup(): ReactElement {
 
     try {
       
+      if(!userNameValidation || !emailValidation || !phoneValidation || !passwordValidation ){
+        
+        throw new Error('All fields should be valid')
+      }
+      
       const result = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -49,8 +54,11 @@ export default function Signup(): ReactElement {
       );
       
       const user = result.user;
-
-      await updateProfile(user, {
+      
+      
+      if(user){
+        
+        await updateProfile(user, {
         displayName: username,
       });
 
@@ -61,20 +69,31 @@ export default function Signup(): ReactElement {
         username: username,
         phone: phone,
       });
+      
+      navigate('/',{replace:true});
+      navigate(0)
 
       console.log("User data added to Firestore with ID:", docRef.id);
       
-      navigate('/login')
+      
+      
+      } else{
+        
+        throw new Error('Authentication Failed: Failed user Creation')
+      }
+      
+
+      
       
     } catch (err: any) {
       
       if (err.code === "auth/email-already-in-use") {
         
-        console.log("Email is already in use. Please choose a different one.");
+        alert("Email is already in use. Please choose a different one.");
         
       } else {
         
-        console.log("An error occurred. Please try again later.");
+        alert(`Error : ${err.message}`);
         
       }
 
@@ -210,7 +229,7 @@ export default function Signup(): ReactElement {
           <br />
           <button >Signup</button>
         </form>
-        <a onClick={handleNavigation}>Login</a>
+        <a className="loginNavigate" onClick={handleNavigation}>Login</a>
       </div>
     </div>
   );

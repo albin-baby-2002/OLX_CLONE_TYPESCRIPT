@@ -4,7 +4,7 @@ import "./Post.css";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../Firebase/config";
 import { Product } from "../../Types/productType";
-import { PostContextType, viewPostContext } from "../../store/ViewPostContext";
+
 import { useNavigate } from "react-router-dom";
 
 
@@ -13,7 +13,6 @@ function Posts(): ReactElement {
   
   const navigate = useNavigate()
   
-  const {setPostDetails} = useContext(viewPostContext) as PostContextType
   
 
   
@@ -56,9 +55,8 @@ fetchData()
           
           onClick={()=>{
             
-            setPostDetails(product)
             
-            navigate('/view')
+            navigate(`/view/${product.id}`)
           }}>
             
             <div className="favorite">

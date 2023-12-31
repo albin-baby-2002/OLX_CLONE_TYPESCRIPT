@@ -14,7 +14,8 @@ import { auth } from "./Firebase/config";
 import { onAuthStateChanged } from "firebase/auth";
 import Create from "./Components/Create/Create";
 import ViewPost from "./Pages/ViewPost";
-import ViewPostContextProvider from "./store/ViewPostContext";
+import Layout from "./Components/Layout/layout";
+import PrivateRouteWrapper from "./HOC/PrivateRoute";
 
 function App(): ReactElement {
   
@@ -24,7 +25,7 @@ function App(): ReactElement {
   useEffect(()=>{
     
     onAuthStateChanged(auth, (user) => {
-       console.log(user);
+      
     
     setUserInfo(user) });
     
@@ -37,22 +38,32 @@ function App(): ReactElement {
       
      
      <>
-     <Route path="/" element={<Home />} />
+     
+       <Route path="/" element={<Layout />}>
+        
+          <Route index element={<Home />} />
+          
+          <Route path="/view/:postId" element={<ViewPost />} />
+          
+          <Route path="/create" element={ <PrivateRouteWrapper component={Create} />} />
+        
+          
+        </Route>
+     
+        
 
         <Route path="/signup" element={<Signup />} />
         
         <Route path="/login" element={<Login />} />
         
-        <Route path="/create" element={<Create />} />
         
-        <Route path="/view" element={<ViewPost />} />
      </>
       
       
     )
   );
 
-  return <ViewPostContextProvider><RouterProvider router={router}></RouterProvider> </ViewPostContextProvider> ;
+  return <RouterProvider router={router}></RouterProvider>  ;
 }
 
 export default App;

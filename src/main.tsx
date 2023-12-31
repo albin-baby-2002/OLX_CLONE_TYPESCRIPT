@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import AuthContextProvider from "./store/userContext.tsx";
+import MessageContextProvider from "./store/MessageContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   
@@ -10,7 +11,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       
       <AuthContextProvider>
         
-         <App />
+        <MessageContextProvider>
+           <App />
+        </MessageContextProvider>
+        
+        
          
       </AuthContextProvider>
    

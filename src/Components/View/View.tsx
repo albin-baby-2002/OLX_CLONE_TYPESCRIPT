@@ -1,35 +1,66 @@
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import "./View.css";
-import { PostContextType, viewPostContext } from "../../store/ViewPostContext";
+
 import { db } from "../../Firebase/config";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import {  collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
 import { Product } from "../../Types/productType";
-import { FirebaseApp } from "firebase/app";
+import { useParams } from "react-router-dom";
+
 function View() {
+  
   
   interface UserFireBaseDoc {
   
   username:string
   id:string
   phone:string
-}
   
-  const {postDetails} = useContext(viewPostContext) as PostContextType
-  
-  
+  }
+
+  const {postId}= useParams()
+
+  const [sellerId,setSellerId] = useState<string|null>(null)
+    
   const [sellerDetails, setSellerDetails] = useState<UserFireBaseDoc |null  >(null)
-  
+
+  const [postDetails,setPostDetails] = useState<Product|null>(null)
+
+
   useEffect(()=>{
     
-   const fetchData =async () => {
-    
-    console.log(postDetails);
-    
-    
-    if(postDetails){
-      const {userId} = postDetails as Product
+    const fetchData = async()=>{
+      
+      
+      if(postId){
         
-        const sellerInfoQuery = query(collection(db, "users"), where("id", "==", userId));
+        const postRef = doc(db, 'products', postId);
+
+        const postDoc = await getDoc(postRef);
+        
+        
+        if(postDoc){
+          
+          let product = postDoc.data()
+          
+          setPostDetails(product as Product);
+          
+          setSellerId(product?.userId)  }
+        
+      }
+        
+    }
+      
+      fetchData()
+      
+    },[postId])
+    
+    
+    useEffect(()=>{
+      
+      const fetchSellerData= async () => {
+        
+        if(sellerId){
+           const sellerInfoQuery = query(collection(db, "users"), where("id", "==", sellerId));
 
         const snapshot = await getDocs(sellerInfoQuery);
         
@@ -39,15 +70,19 @@ function View() {
           
           console.log('doc data',doc.data())
         })
-    }
-    
+        }
         
-   }
-   
-   
-   fetchData()
+         
+        
+      }
+      
+      fetchSellerData()
+      
+     
+      
+    },[sellerId])
     
-  },[postDetails])
+
   
   return (
     <div className="viewParentDiv">
